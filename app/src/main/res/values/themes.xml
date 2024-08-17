@@ -26,11 +26,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="actionBarTheme">@style/Custom.Toolbar</item>
-<!--        <item name="android:fontFamily">@font/montserrat</item>-->
+        <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
     <style name="Custom.Toolbar" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorControlNormal">@color/white</item>
         <item name="android:textColorPrimary">@color/white</item>
-<!--        <item name="android:fontFamily">@font/montserrat_medium</item>-->
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 </resources>

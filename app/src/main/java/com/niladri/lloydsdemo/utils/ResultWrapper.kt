@@ -1,6 +1,11 @@
 package com.niladri.lloydsdemo.utils
 
-data class ResultWrapper<out T>(val status: Status, val data: T?, val message: String?, val title: String?) {
+data class ResultWrapper<out T>(
+    val status: Status,
+    val data: T?,
+    val message: String?,
+    val title: String?
+) {
     companion object {
         fun <T> Success(data: T?): ResultWrapper<T> {
             return ResultWrapper(Status.SUCCESS, data, null, null)

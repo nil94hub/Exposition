@@ -44,7 +44,8 @@ class PostsAdapter(mainActivity: MainActivity) : RecyclerView.Adapter<PostsAdapt
         return data.size
     }
 
-    class ViewHolder(private val binding: PostLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: PostLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PostResponseItem) {
             binding.responseItem = item
         }

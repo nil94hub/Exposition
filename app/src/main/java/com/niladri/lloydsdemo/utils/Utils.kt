@@ -9,7 +9,7 @@ import com.niladri.lloydsdemo.R
 import javax.inject.Inject
 
 
-class Utils @Inject constructor(){
+class Utils @Inject constructor() {
 
     fun toast(context: Context, text: String, duration: Int? = null) {
         val lloydsApplication = LloydsApplication()

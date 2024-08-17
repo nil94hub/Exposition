@@ -4,9 +4,11 @@ import android.app.Application
 import android.content.Context
 import dagger.hilt.android.HiltAndroidApp
 import java.io.File
+
 @HiltAndroidApp
-class LloydsApplication: Application() {
+class LloydsApplication : Application() {
     private val sharedPrefFile = "sharedPref"
+
     override fun onCreate() {
         super.onCreate()
         val dexOutputDir: File = codeCacheDir

@@ -9,8 +9,12 @@ import android.widget.TextView
 import com.niladri.lloydsdemo.R
 
 class ProgressDialogue {
-    companion object{
-        fun progressDialog(context: Context, titleTxt: String?=null, msgTxt: String?=null): Dialog {
+    companion object {
+        fun progressDialog(
+            context: Context,
+            titleTxt: String? = null,
+            msgTxt: String? = null
+        ): Dialog {
             val dialog = Dialog(context)
             val inflate = LayoutInflater.from(context).inflate(R.layout.progress_dialog, null)
             dialog.setContentView(inflate)

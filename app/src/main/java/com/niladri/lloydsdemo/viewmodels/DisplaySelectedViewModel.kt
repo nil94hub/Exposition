@@ -1,4 +1,4 @@
-package com.niladri.lloydsdemo.network
+package com.niladri.lloydsdemo.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,8 +10,9 @@ import com.niladri.lloydsdemo.repository.Repo
 import com.niladri.lloydsdemo.utils.ResultWrapper
 import com.niladri.lloydsdemo.utils.Status
 import com.niladri.lloydsdemo.utils.Utils
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-
+@HiltViewModel
 class DisplaySelectedViewModel @Inject constructor(private val repository: Repo) : ViewModel() {
     @Inject
     lateinit var utils: Utils
