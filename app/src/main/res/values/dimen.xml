@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_10sp">10sp</dimen>
+    <dimen name="text_15sp">15sp</dimen>
+    <dimen name="card_1sp">1sp</dimen>
+    <dimen name="card_5dp">5dp</dimen>
+    <dimen name="heading_17sp">17sp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+</resources>
