@@ -29,7 +29,8 @@ class DisplaySelectedData : AppCompatActivity() {
         index = intent.getIntExtra(POSITION, 0)
         viewModel.getData(index)
         viewModel.genericDialogEvent.observe(this) {
-            utils.showAlertDialog(resources.getString(R.string.generic_alert), this)
+            if (it)
+                utils.showAlertDialog(resources.getString(R.string.generic_alert), this)
         }
         showSelectedData()
     }
@@ -38,9 +39,8 @@ class DisplaySelectedData : AppCompatActivity() {
     private fun showSelectedData() {
         viewModel.getSelectedData.observe(this) {
             it?.let { utils.toast(this, LOADING + it.id) }
-            binding.tvId.setText(Integer.toString(it.id) + " ")
+            binding.tvId.text = Integer.toString(it.id) + " "
             binding.tvBody.text = it.body
-            viewModel.removeObservers()
         }
     }
 }

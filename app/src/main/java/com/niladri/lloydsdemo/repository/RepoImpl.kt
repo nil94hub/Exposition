@@ -1,21 +1,25 @@
 package com.niladri.lloydsdemo.repository
 
-import android.util.Log
 import com.niladri.lloydsdemo.api.RetroEndpoints
+import com.niladri.lloydsdemo.utils.Constants.ERROR_MSG
 import com.niladri.lloydsdemo.utils.ResultWrapper
 import javax.inject.Inject
 
+/**
+ * We will have all the Network calls in this class thus keeping the the repository class clean.
+ * Hence the repo can be used only to store data across the app.
+*/
 class RepoImpl @Inject constructor(private val retroEndpoints: RetroEndpoints) : Repo() {
 
     override suspend fun getPosts() {
-        postLiveData.postValue(ResultWrapper.Loading())
+        postLiveData.postValue(ResultWrapper.loading())
         val response = retroEndpoints.getPostData()
         if (response.isSuccessful && response.body() != null)
-            postLiveData.postValue(ResultWrapper.Success(response.body()!!))
+            postLiveData.postValue(ResultWrapper.success(response.body()!!))
         else if (response.errorBody() != null)
-            postLiveData.postValue(ResultWrapper.Error(response.errorBody().toString()))
+            postLiveData.postValue(ResultWrapper.error(response.errorBody().toString()))
         else
-            postLiveData.postValue(ResultWrapper.Error("Something Went wrong"))
+            postLiveData.postValue(ResultWrapper.error(ERROR_MSG))
     }
 
 }

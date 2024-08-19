@@ -11,12 +11,14 @@ import javax.inject.Inject
 
 class Utils @Inject constructor() {
 
+    //Setting the toast visibility using this function
     fun toast(context: Context, text: String, duration: Int? = null) {
         val lloydsApplication = LloydsApplication()
         if (lloydsApplication.getToastEnabled(context))
             Toast.makeText(context, text, duration ?: Toast.LENGTH_SHORT).show()
     }
 
+    //Function to display alert Dialogue
     fun showAlertDialog(
         message: String?,
         ctx: Context

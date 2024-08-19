@@ -2,12 +2,11 @@ package com.niladri.lloydsdemo.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.niladri.lloydsdemo.activities.MainActivity
 import com.niladri.lloydsdemo.databinding.PostLayoutBinding
-import com.niladri.lloydsdemo.interfaces.OnClick
+import com.niladri.lloydsdemo.callback.OnClick
 import com.niladri.lloydsdemo.model.PostResponseItem
 import com.niladri.lloydsdemo.model.PostResponse
 
@@ -35,9 +34,9 @@ class PostsAdapter(mainActivity: MainActivity) : RecyclerView.Adapter<PostsAdapt
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data[position])
-        holder.itemView.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener {
             onClick.passData(position)
-        })
+        }
     }
 
     override fun getItemCount(): Int {

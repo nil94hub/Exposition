@@ -16,6 +16,8 @@ import javax.inject.Inject
 class DisplaySelectedViewModel @Inject constructor(private val repository: Repo) : ViewModel() {
     @Inject
     lateinit var utils: Utils
+
+    //isLoadingState can be used in future to show progress dialogue or some other actions
     private val _isLoadingState = MutableLiveData(false)
     val isLoadingState: LiveData<Boolean> = _isLoadingState
 
@@ -29,15 +31,14 @@ class DisplaySelectedViewModel @Inject constructor(private val repository: Repo)
 
 
     fun getData(index: Int) {
-        removeObservers()
         getIndex = index
         repository.postLiveData.observeForever(postDataObserver)
     }
 
-    fun removeObservers() {
+    override fun onCleared() {
+        super.onCleared()
         repository.postLiveData.removeObserver(postDataObserver)
     }
-
     private val postDataObserver = Observer<ResultWrapper<PostResponse>> { result ->
         when (result.status) {
             Status.LOADING -> _isLoadingState.postValue(true)

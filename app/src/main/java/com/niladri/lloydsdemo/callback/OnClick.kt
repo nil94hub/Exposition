@@ -1,4 +1,4 @@
-package com.niladri.lloydsdemo.interfaces
+package com.niladri.lloydsdemo.callback
 
 interface OnClick {
     fun passData(index: Int)

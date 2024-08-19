@@ -18,7 +18,6 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
         android:layout_toEndOf="@+id/progressBar"
-        tools:text="some title"
         />
 
     <TextView
@@ -28,6 +27,5 @@
         android:layout_below="@+id/title"
         android:layout_marginStart="8dp"
         android:layout_toEndOf="@+id/progressBar"
-        tools:text="some msg"
         />
 </RelativeLayout>

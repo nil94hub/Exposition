@@ -7,7 +7,9 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.widget.TextView
 import com.niladri.lloydsdemo.R
-
+/**
+ * This ProgressDialogue can be reused by passing context from anywhere across the application
+ * */
 class ProgressDialogue {
     companion object {
         fun progressDialog(
@@ -19,8 +21,8 @@ class ProgressDialogue {
             val inflate = LayoutInflater.from(context).inflate(R.layout.progress_dialog, null)
             dialog.setContentView(inflate)
             dialog.setCancelable(false)
-            var title = inflate.findViewById<TextView>(R.id.title)
-            var msg = inflate.findViewById<TextView>(R.id.msg)
+            val title = inflate.findViewById<TextView>(R.id.title)
+            val msg = inflate.findViewById<TextView>(R.id.msg)
             title.text = titleTxt
             msg.text = msgTxt
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

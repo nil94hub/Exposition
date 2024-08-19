@@ -5,13 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.niladri.lloydsdemo.LloydsApplication
 import com.niladri.lloydsdemo.R
 import com.niladri.lloydsdemo.adapter.PostsAdapter
 import com.niladri.lloydsdemo.databinding.ActivityMainBinding
-import com.niladri.lloydsdemo.interfaces.OnClick
+import com.niladri.lloydsdemo.callback.OnClick
 import com.niladri.lloydsdemo.network.CheckInternet.Companion.isNetworkAvailable
 import com.niladri.lloydsdemo.utils.Constants.POSITION
 import com.niladri.lloydsdemo.utils.ProgressDialogue.Companion.progressDialog
@@ -42,44 +41,23 @@ class MainActivity : AppCompatActivity(), OnClick {
             resources.getString(R.string.generic_alert),
             this
         )
-        viewModel.getData()
         viewModel.getPostData.observe(this) {
             it?.let { postAdapter.apply { setPostData(it, this@MainActivity) } }
         }
         viewModel.genericDialogEvent.observe(this) {
-            utils.showAlertDialog(resources.getString(R.string.generic_alert), this)
+            if (it)
+                utils.showAlertDialog(resources.getString(R.string.generic_alert), this)
         }
-        viewModel.isLoadingState.observe(this, Observer {
+        viewModel.isLoadingState.observe(this) {
             when (it) {
-                true -> showProgressDialogue()
+                true -> progress.show()
 
-                false -> dismissDialogue()
+                false -> progress.dismiss()
             }
-        })
+        }
         prepareRecyclerView()
         lloydsApplication = LloydsApplication()
         lloydsApplication.setToastEnabled(true, this)
-    }
-
-    fun showProgressDialogue() {
-        progress?.let { it.show() }
-    }
-
-    fun dismissDialogue() {
-        progress?.let {
-            progress.dismiss()
-        }
-
-    }
-
-
-    private fun removeObserver() {
-        viewModel.removeObservers()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        removeObserver()
     }
 
     private fun prepareRecyclerView() {
@@ -94,7 +72,6 @@ class MainActivity : AppCompatActivity(), OnClick {
     override fun passData(index: Int) {
         val intent = Intent(this, DisplaySelectedData::class.java)
         intent.putExtra(POSITION, index)
-        // intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
 }

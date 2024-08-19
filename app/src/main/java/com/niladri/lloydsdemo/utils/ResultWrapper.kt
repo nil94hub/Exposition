@@ -1,5 +1,7 @@
 package com.niladri.lloydsdemo.utils
-
+/**
+ *  A generic class that holds a value with its loading status
+ * */
 data class ResultWrapper<out T>(
     val status: Status,
     val data: T?,
@@ -7,15 +9,15 @@ data class ResultWrapper<out T>(
     val title: String?
 ) {
     companion object {
-        fun <T> Success(data: T?): ResultWrapper<T> {
+        fun <T> success(data: T?): ResultWrapper<T> {
             return ResultWrapper(Status.SUCCESS, data, null, null)
         }
 
-        fun <T> Error(msg: String, data: T? = null, title: String? = null): ResultWrapper<T> {
+        fun <T> error(msg: String, data: T? = null, title: String? = null): ResultWrapper<T> {
             return ResultWrapper(Status.ERROR, data, msg, title)
         }
 
-        fun <T> Loading(data: T? = null): ResultWrapper<T> {
+        fun <T> loading(data: T? = null): ResultWrapper<T> {
             return ResultWrapper(Status.LOADING, data, null, null)
         }
     }

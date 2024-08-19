@@ -28,14 +28,11 @@ class MainActivityViewModel @Inject constructor(private val userRepository: Repo
 
     fun makeApiCall() {
         viewModelScope.launch { userRepository.getPosts() }
-    }
-
-    fun getData() {
-        removeObservers()
         userRepository.postLiveData.observeForever(postDataObserver)
     }
 
-    fun removeObservers() {
+    override fun onCleared() {
+        super.onCleared()
         userRepository.postLiveData.removeObserver(postDataObserver)
     }
 
