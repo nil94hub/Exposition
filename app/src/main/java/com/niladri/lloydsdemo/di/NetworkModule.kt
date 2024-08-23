@@ -1,6 +1,6 @@
 package com.niladri.lloydsdemo.di
 
-import com.niladri.lloydsdemo.api.RetroEndpoints
+import com.niladri.lloydsdemo.api.RetroEndpointsService
 import com.niladri.lloydsdemo.repository.Repo
 import com.niladri.lloydsdemo.repository.RepoImpl
 import com.niladri.lloydsdemo.utils.Constants
@@ -34,13 +34,13 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesRetroEndpoints(retrofit: Retrofit): RetroEndpoints {
-        return retrofit.create(RetroEndpoints::class.java)
+    fun providesRetroEndpoints(retrofit: Retrofit): RetroEndpointsService {
+        return retrofit.create(RetroEndpointsService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideUserRepo(retroEndpoints: RetroEndpoints): Repo {
+    fun provideUserRepo(retroEndpoints: RetroEndpointsService): Repo {
         return RepoImpl(retroEndpoints)
     }
 }

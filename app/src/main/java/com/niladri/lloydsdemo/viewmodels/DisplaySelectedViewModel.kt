@@ -14,8 +14,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 @HiltViewModel
 class DisplaySelectedViewModel @Inject constructor(private val repository: Repo) : ViewModel() {
-    @Inject
-    lateinit var utils: Utils
 
     //isLoadingState can be used in future to show progress dialogue or some other actions
     private val _isLoadingState = MutableLiveData(false)

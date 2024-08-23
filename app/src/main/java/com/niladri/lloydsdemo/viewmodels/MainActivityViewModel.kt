@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(private val userRepository: Repo) :
+class MainActivityViewModel @Inject constructor(private val repository: Repo) :
     ViewModel() {
     // Observable loading state
     private val _isLoadingState = MutableLiveData(false)
@@ -27,13 +27,13 @@ class MainActivityViewModel @Inject constructor(private val userRepository: Repo
     val getPostData: LiveData<PostResponse> = _getPostData
 
     fun makeApiCall() {
-        viewModelScope.launch { userRepository.getPosts() }
-        userRepository.postLiveData.observeForever(postDataObserver)
+        viewModelScope.launch { repository.getPosts() }
+        repository.postLiveData.observeForever(postDataObserver)
     }
 
     override fun onCleared() {
         super.onCleared()
-        userRepository.postLiveData.removeObserver(postDataObserver)
+        repository.postLiveData.removeObserver(postDataObserver)
     }
 
     private val postDataObserver = Observer<ResultWrapper<PostResponse>> { result ->

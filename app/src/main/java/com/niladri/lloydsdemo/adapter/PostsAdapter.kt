@@ -16,7 +16,6 @@ class PostsAdapter(mainActivity: MainActivity) : RecyclerView.Adapter<PostsAdapt
     private lateinit var onClick: OnClick
 
     fun setPostData(postList: PostResponse, onClick: OnClick) {
-        println("Nil cv1 -> " + postList)
         data = postList
         this.onClick = onClick
         notifyDataSetChanged()

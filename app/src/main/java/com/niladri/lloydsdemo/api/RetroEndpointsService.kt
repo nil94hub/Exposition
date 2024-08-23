@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import javax.inject.Singleton
 
 @Singleton
-interface RetroEndpoints {
+interface RetroEndpointsService {
 
     @GET("posts")
     suspend fun getPostData(): Response<PostResponse>
